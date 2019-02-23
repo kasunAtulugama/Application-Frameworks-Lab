@@ -6,5 +6,38 @@
 </head>
 <body>
 
+    <script type="text/javascript">
+
+        var vehicleName = 'Toyota';
+        
+        function printVehicleNameOuter() {
+            console.log(this.vehicleName);
+        }
+
+        console.log(this);
+
+        printVehicleNameOuter();
+
+        var vehicle = {
+            vehicleName: 'Nissan',
+            printVehicleInner: function () {
+                return function () {
+                    console.log(this.vehicleName)
+                }
+            }
+        };
+
+        var execute = vehicle.printVehicleInner();
+        execute();
+
+        execute.call(vehicle);
+
+        var exeRun = vehicle.printVehicleInner().bind(vehicle);
+        exeRun();
+
+        vehicle.printVehicleInner();
+
+    </script>
+
 </body>
 </html>
