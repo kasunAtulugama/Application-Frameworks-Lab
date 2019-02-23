@@ -7,6 +7,16 @@
 <body>
     <script type="text/javascript">
 
+        function taxCalculator(tax) {
+            var taxPrecentage = tax;
+            return function (amount) {
+                return amount * tax / 100
+            }
+        }
+
+        var calculator = taxCalculator(10);
+        console.log(calculator(90));
+
     </script>
 
 
